@@ -8,8 +8,9 @@
         :root {
             --primary-color: #2c3e50;
             --accent-color: #e74c3c;
-            --bg-color: #ecf0f1;
-            --card-bg: #ffffff;
+            --bg-color: rgba(236, 240, 241, 0.9);
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --checkbox-size: 1.2em;
         }
 
         * {
@@ -20,10 +21,14 @@
 
         body {
             font-family: 'Arial', sans-serif;
-            background-color: var(--bg-color);
             color: var(--primary-color);
             line-height: 1.6;
             padding: 20px;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTIwIj48cGF0aCBmaWxsPSIjMDY4MzJmIiBkPSJNNTAgMEwzNSAyMGg1TDI1IDQwaDEwTDIwIDYwaDEwTDEwIDgwaDIwTDIwIDEwMGg2MGwtMTAtMjBoMjBMMTAgODBoMTBMMzUgNjBoMTBMNDAgNDBoMTBMNTAgMjBoNUw1MCAweiIvPjxwYXRoIGZpbGw9IiM4YjRhMTMiIGQ9Ik00NSAxMDBoMTB2MjBINDV6Ii8+PC9zdmc+');
+            background-repeat: no-repeat;
+            background-position: right 20px top 20px;
+            background-size: 200px auto;
+            min-height: 100vh;
         }
 
         .container {
@@ -36,6 +41,7 @@
             color: var(--primary-color);
             margin-bottom: 40px;
             font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
 
         .tasks-grid {
@@ -50,6 +56,7 @@
             border-radius: 10px;
             padding: 20px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
         }
 
         .person-name {
@@ -67,6 +74,9 @@
         .task-item {
             padding: 8px 0;
             border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .task-item:last-child {
@@ -78,11 +88,34 @@
             border-radius: 10px;
             padding: 20px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+        }
+
+        .task-checkbox {
+            width: var(--checkbox-size);
+            height: var(--checkbox-size);
+            margin: 0;
+            cursor: pointer;
+        }
+
+        .task-label {
+            cursor: pointer;
+            flex: 1;
+        }
+
+        .task-item.completed .task-label {
+            text-decoration: line-through;
+            color: #888;
         }
 
         @media (max-width: 768px) {
             .tasks-grid {
                 grid-template-columns: 1fr;
+            }
+            body {
+                background-position: center top 20px;
+                background-size: 150px auto;
+                padding-top: 180px;
             }
         }
     </style>
@@ -95,34 +128,64 @@
             <div class="person-tasks">
                 <h2 class="person-name">Даша</h2>
                 <ul class="task-list">
-                    <li class="task-item">Олів'є</li>
-                    <li class="task-item">Млинці шпинатні з рибкою</li>
-                    <li class="task-item">Біскоті</li>
+                    <li class="task-item">
+                        <input type="checkbox" id="task1" class="task-checkbox">
+                        <label for="task1" class="task-label">Олів'є</label>
+                    </li>
+                    <li class="task-item">
+                        <input type="checkbox" id="task2" class="task-checkbox">
+                        <label for="task2" class="task-label">Млинці шпинатні з рибкою</label>
+                    </li>
+                    <li class="task-item">
+                        <input type="checkbox" id="task3" class="task-checkbox">
+                        <label for="task3" class="task-label">Біскоті</label>
+                    </li>
                 </ul>
             </div>
 
             <div class="person-tasks">
                 <h2 class="person-name">Настя</h2>
                 <ul class="task-list">
-                    <li class="task-item">Салат крабовий</li>
-                    <li class="task-item">Пекінська капуста з намазкою</li>
-                    <li class="task-item">Тортик</li>
+                    <li class="task-item">
+                        <input type="checkbox" id="task4" class="task-checkbox">
+                        <label for="task4" class="task-label">Салат крабовий</label>
+                    </li>
+                    <li class="task-item">
+                        <input type="checkbox" id="task5" class="task-checkbox">
+                        <label for="task5" class="task-label">Пекінська капуста з намазкою</label>
+                    </li>
+                    <li class="task-item">
+                        <input type="checkbox" id="task6" class="task-checkbox">
+                        <label for="task6" class="task-label">Тортик</label>
+                    </li>
                 </ul>
             </div>
 
             <div class="person-tasks">
                 <h2 class="person-name">Аліна</h2>
                 <ul class="task-list">
-                    <li class="task-item">Пюрешка</li>
-                    <li class="task-item">Запечена курка/качка</li>
-                    <li class="task-item">Слойки</li>
+                    <li class="task-item">
+                        <input type="checkbox" id="task7" class="task-checkbox">
+                        <label for="task7" class="task-label">Пюрешка</label>
+                    </li>
+                    <li class="task-item">
+                        <input type="checkbox" id="task8" class="task-checkbox">
+                        <label for="task8" class="task-label">Запечена курка/качка</label>
+                    </li>
+                    <li class="task-item">
+                        <input type="checkbox" id="task9" class="task-checkbox">
+                        <label for="task9" class="task-label">Слойки</label>
+                    </li>
                 </ul>
             </div>
 
             <div class="person-tasks">
                 <h2 class="person-name">Марко</h2>
                 <ul class="task-list">
-                    <li class="task-item">Тартар</li>
+                    <li class="task-item">
+                        <input type="checkbox" id="task10" class="task-checkbox">
+                        <label for="task10" class="task-label">Тартар</label>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -130,11 +193,47 @@
         <div class="general-tasks">
             <h2 class="person-name">Загальні страви</h2>
             <ul class="task-list">
-                <li class="task-item">Нарізка (сир + ковбаска)</li>
-                <li class="task-item">Канапки рибка+масло+огірок/ікра+масло</li>
-                <li class="task-item">Соуси до м'яса/риби</li>
+                <li class="task-item">
+                    <input type="checkbox" id="task11" class="task-checkbox">
+                    <label for="task11" class="task-label">Нарізка (сир + ковбаска)</label>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" id="task12" class="task-checkbox">
+                    <label for="task12" class="task-label">Канапки рибка+масло+огірок/ікра+масло</label>
+                </li>
+                <li class="task-item">
+                    <input type="checkbox" id="task13" class="task-checkbox">
+                    <label for="task13" class="task-label">Соуси до м'яса/риби</label>
+                </li>
             </ul>
         </div>
     </div>
+
+    <script>
+        // Load saved states when the page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkboxes = document.querySelectorAll('.task-checkbox');
+            checkboxes.forEach(checkbox => {
+                const savedState = localStorage.getItem(checkbox.id);
+                if (savedState === 'true') {
+                    checkbox.checked = true;
+                    checkbox.closest('.task-item').classList.add('completed');
+                }
+            });
+        });
+
+        // Save states when checkboxes are clicked
+        document.querySelectorAll('.task-checkbox').forEach(checkbox => {
+            checkbox.addEventListener('change', (e) => {
+                const taskItem = e.target.closest('.task-item');
+                if (e.target.checked) {
+                    taskItem.classList.add('completed');
+                } else {
+                    taskItem.classList.remove('completed');
+                }
+                localStorage.setItem(e.target.id, e.target.checked);
+            });
+        });
+    </script>
 </body>
 </html>
