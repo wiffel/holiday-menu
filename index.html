@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Святковий План</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --bg-color: #ecf0f1;
+            --card-bg: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--primary-color);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+
+        .tasks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .person-tasks {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .person-name {
+            color: var(--accent-color);
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 5px;
+        }
+
+        .task-list {
+            list-style: none;
+        }
+
+        .task-item {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .task-item:last-child {
+            border-bottom: none;
+        }
+
+        .general-tasks {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .tasks-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎄 Святковий План 🎄</h1>
+        
+        <div class="tasks-grid">
+            <div class="person-tasks">
+                <h2 class="person-name">Даша</h2>
+                <ul class="task-list">
+                    <li class="task-item">Олів'є</li>
+                    <li class="task-item">Млинці шпинатні з рибкою</li>
+                    <li class="task-item">Біскоті</li>
+                </ul>
+            </div>
+
+            <div class="person-tasks">
+                <h2 class="person-name">Настя</h2>
+                <ul class="task-list">
+                    <li class="task-item">Салат крабовий</li>
+                    <li class="task-item">Пекінська капуста з намазкою</li>
+                    <li class="task-item">Тортик</li>
+                </ul>
+            </div>
+
+            <div class="person-tasks">
+                <h2 class="person-name">Аліна</h2>
+                <ul class="task-list">
+                    <li class="task-item">Пюрешка</li>
+                    <li class="task-item">Запечена курка/качка</li>
+                    <li class="task-item">Слойки</li>
+                </ul>
+            </div>
+
+            <div class="person-tasks">
+                <h2 class="person-name">Марко</h2>
+                <ul class="task-list">
+                    <li class="task-item">Тартар</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="general-tasks">
+            <h2 class="person-name">Загальні страви</h2>
+            <ul class="task-list">
+                <li class="task-item">Нарізка (сир + ковбаска)</li>
+                <li class="task-item">Канапки рибка+масло+огірок/ікра+масло</li>
+                <li class="task-item">Соуси до м'яса/риби</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
